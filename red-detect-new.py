@@ -15,7 +15,7 @@ while True:
     # 画像をHSVカラースペースに変換 
     hsv = cv2.cvtColor(im, cv2.COLOR_BGR2HSV)
     
-    # 赤色の範囲を定義 (修正点2)
+    # 赤色の範囲を定義 
     lower_red1 = np.array([0, 100, 100])
     upper_red1 = np.array([10, 255, 255])
     lower_red2 = np.array([160, 100, 100])
