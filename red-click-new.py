@@ -9,7 +9,7 @@ def on_mouse_click(event, x, y, flags, param):
 
 # Picamera2を初期化
 picam2 = Picamera2()
-preview_config = picam2.create_preview_configuration(main={"size": (800, 600)})  # 解像度を800x600に変更
+preview_config = picam2.create_preview_configuration(main={"size": (800, 600)})  # 画像サイズを800x600に変更
 picam2.configure(preview_config)
 picam2.start()
 
