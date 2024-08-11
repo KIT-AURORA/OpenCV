@@ -4,7 +4,7 @@ import cv2
 import numpy as np
 from picamera2 import Picamera2
 
-def stackImages(scale, imgArray): 
+def stackImages(scale, imgArray): #4つの画像を上手く表示させるためのコード。内容はchatgptに書かせたのでよくわかりません、
     rows = len(imgArray)
     cols = len(imgArray[0])
     rowsAvailable = isinstance(imgArray[0], list)
@@ -35,7 +35,7 @@ def stackImages(scale, imgArray):
         ver = hor
     return ver
 
-# initialize the camera
+# カメラの初期設定
 camera = Picamera2()
 camera_config = camera.create_preview_configuration(main={"format": 'RGB888', "size": (640, 480)})
 camera.configure(camera_config)
@@ -46,35 +46,41 @@ cv2.resizeWindow("Result", 1280, 960)
 
 while True:
     while True:
-        try:
+        try:#Hue値の入力を受け取る
             hue_value = int(input("Hue value between 10 and 245: "))
             if (hue_value < 10) or (hue_value > 245):
                 raise ValueError
-        except ValueError:
+        except ValueError:#不正な入力があった場合のエラーメッセージ
             print("That isn't an integer between 10 and 245, try again")
         else:
             break
-
-    lower_red = np.array([hue_value-10,100,50])
+    
+    # 識別のの範囲
+    lower_red = np.array([hue_value-10,100,50]) #場合によってパラメータを変更する必要がある。
     upper_red = np.array([hue_value+10, 255, 150])
 
     while True:
-        # Capture frame
+        # フレームをキャプチャ
         image = camera.capture_array()
-
+        # RGBからHSVに変換
         hsv = cv2.cvtColor(image, cv2.COLOR_RGB2HSV)
+        # 色範囲に基づいてマスクを作成
         color_mask = cv2.inRange(hsv, lower_red, upper_red)
+        # マスクを使って元の画像と色マスクを組み合わせる
         result = cv2.bitwise_and(image, image, mask=color_mask)
 
+        # 画像を結合して表示
         stacked_images = stackImages(0.8, ([image, hsv], [color_mask, result]))
         cv2.imshow("Result", stacked_images)
 
+        # キー入力の待機
         k = cv2.waitKey(1) & 0xFF
-        if k == 27:  # 27 is the ASCII code for the Esc key
+        if k == 27:  # Escキーでループを終了
             break
 
     if k == 27:
         break
 
+# ウィンドウを閉じ、カメラを停止
 cv2.destroyAllWindows()
 camera.stop()

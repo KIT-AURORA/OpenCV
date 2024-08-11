@@ -15,7 +15,7 @@ while True:
     # 画像をHSVカラースペースに変換 
     hsv = cv2.cvtColor(image, cv2.COLOR_RGB2HSV)
     
-    # 赤色の範囲を定義 
+    # 赤色の範囲を定義。S,Vは環境によって変わるので、範囲を大きくとっておいたほうが良い。
     lower_red = np.array([160, 100, 50])
     upper_red = np.array([180, 255, 150])
     
@@ -30,7 +30,6 @@ while True:
         x, y, w, h = cv2.boundingRect(contour)
         cv2.rectangle(image, (x, y), (x + w, y + h), (0, 255, 0), 2)
     
-    # ここに画像処理コードを追加する場合はこのコメント内に追加
     
     # 画像を表示
     cv2.imshow('Camera', image)
