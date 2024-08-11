@@ -4,14 +4,15 @@ import numpy as np
 
 def on_mouse_click(event, x, y, flags, param):
     if event == cv2.EVENT_LBUTTONDOWN:
-        pixel_value = frame[y, x]
-        print("Clicked at (x={}, y={}) - RGB: {}".format(x, y, pixel_value[::-1]))
+        # HSV値を取得
+        pixel_value = frame_hsv[y, x]
+        print("Clicked at (x={}, y={}) - HSV: {}".format(x, y, pixel_value))
 
 # Picamera2を初期化
-picam2 = Picamera2()
-preview_config = picam2.create_preview_configuration(main={"size": (800, 600)})  # 画像サイズを800x600に変更
-picam2.configure(preview_config)
-picam2.start()
+camera = Picamera2()
+camera_config = camera.create_preview_configuration(main={"format": 'RGB888', "size": (640, 480)})
+camera.configure(camera_config)
+camera.start()
 
 # ウィンドウを作成し、位置と大きさを設定
 cv2.namedWindow("Camera", cv2.WINDOW_NORMAL)
@@ -21,14 +22,17 @@ cv2.moveWindow("Camera", 100, 50)  # ウィンドウ位置を(100, 50)に設定
 cv2.setMouseCallback("Camera", on_mouse_click)
 
 while True:
-    frame = picam2.capture_array()
-    frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+    frame = camera.capture_array()
     
-    cv2.imshow("Camera", frame_rgb)
+    # RGBからHSVに変換
+    frame_hsv = cv2.cvtColor(frame, cv2.COLOR_RGB2HSV)
+    
+    cv2.imshow("Camera", frame)  # RGBで表示
     
     key = cv2.waitKey(1)
     if key == 27:  # Escキーでループを終了
         break
 
 cv2.destroyAllWindows()
-picam2.stop()
+camera.stop()
+
