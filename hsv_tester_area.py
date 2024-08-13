@@ -59,20 +59,6 @@ while True:
     upper_red = np.array([hue_value+10, 255, 150])
 
     while True:
-        while True:
-            try:
-                hue_value = int(input("Hue value between 10 and 245: "))
-                if (hue_value < 10) or (hue_value > 245):
-                    raise ValueError
-            except ValueError:
-                print("That isn't an integer between 10 and 245, try again")
-            else:
-                break
-    
-    lower_red = np.array([hue_value-10,100,50])
-    upper_red = np.array([hue_value+10, 255, 150])
-
-    while True:
         image = camera.capture_array()
         hsv = cv2.cvtColor(image, cv2.COLOR_RGB2HSV)
         color_mask = cv2.inRange(hsv, lower_red, upper_red)
