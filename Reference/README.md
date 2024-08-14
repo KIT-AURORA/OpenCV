@@ -5,7 +5,7 @@
 
 | ファイル名 | 説明 |
 | --- | --- |
-| all_plus.py | 走行処理 |
-| ball_follower.py |画像認識でボールを追いかけるプログラム |
+| all_plus.py | 走行処理関係を定義したコード |
+| ball_follower.py |画像認識でボールを追いかけるコード |
 | camerarun.py | 画像処理走行のクラスを定義しているファイル|
 | mdlreddetect.py | 赤色を検出する関数が定義されているファイル |
