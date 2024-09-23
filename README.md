@@ -12,5 +12,6 @@
 | hsv-tester.py | ・元画像・HSVの変換画像・指定したHSVのマスキング・切り抜き画像、の4つを表示。HSVをメインコードに使うなら、hsv-click.pyで数値の見当を付け、このコードでテスト|
 | ht_area.py | 'hsv_tester.py'で行ったグレースケールの面積をピクセル数で画面に表示するもの |
 | ht_percent.py | 'hsv_tester.py'で行ったグレースケールの面積が全体の何パーセントを占めるかを表示するもの |
+| ht_percent2.py | 'ht_perent2.py'をグレースケールのみ表示 |
 | ht_color.py | 'hsv_percent.py'で表示されたパーセントの値を50％以上であれば緑、未満であれば赤色に表示するコードにしたかった |
 | ht_color2.py | 'ht_color.py'をグレースケールのみ表示 |
