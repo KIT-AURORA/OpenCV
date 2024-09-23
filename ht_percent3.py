@@ -5,7 +5,7 @@ from picamera2 import Picamera2
 import RPi.GPIO as GPIO
 
 # GPIOのセットアップ
-LED_PIN = 18  # 使用するGPIOピン
+LED_PIN = 22  # 使用するGPIOピン
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(LED_PIN, GPIO.OUT)
 
