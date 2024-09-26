@@ -15,3 +15,6 @@
 | ht_percent2.py | 'ht_perent2.py'をグレースケールのみ表示 |
 | ht_color.py | 'hsv_percent.py'で表示されたパーセントの値を50％以上であれば緑、未満であれば赤色に表示するコードにしたかった |
 | ht_color2.py | 'ht_color.py'をグレースケールのみ表示 |
+|.py | 'ht_color.py'をグレースケールのみ表示 |
+
+
