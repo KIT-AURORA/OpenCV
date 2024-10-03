@@ -24,7 +24,7 @@ HUE_VAL = 127# 実験などで細かい値を設定
 
 #環境に合わせて変わるため、範囲は大きくとっておくのが良い。走行前に走る環境でhsv-click.pyでテスト。
 
-lower_color = np.array([HUE_VAL-10, 25, 80])# 実験などで細かい値を設定
+lower_color = np.array([HUE_VAL-10, 100, 55])# 実験などで細かい値を設定
 upper_color = np.array([HUE_VAL+10, 255, 255])# 実験などで細かい値を設定
 
 while True:
