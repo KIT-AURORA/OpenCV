@@ -18,7 +18,7 @@ maximum_area = 300000  # 実験などで細かい値を設定
 
 robot = gpiozero.Robot(left=(24, 23), right=(20, 21)) #ピン配置の設定
 forward_speed = 1 # 実験などで細かい値を0~1に設定。
-turn_speed = 0.5  # 実験などで細かい値を0~1に設定
+turn_speed = 0.7  # 実験などで細かい値を0~1に設定
 
 HUE_VAL = 120# 実験などで細かい値を設定
 
