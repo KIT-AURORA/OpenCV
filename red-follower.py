@@ -20,12 +20,12 @@ robot = gpiozero.Robot(left=(24, 23), right=(20, 21)) #ピン配置の設定
 forward_speed = 1 # 実験などで細かい値を0~1に設定。
 turn_speed = 0.7  # 実験などで細かい値を0~1に設定
 
-HUE_VAL = 120# 実験などで細かい値を設定
+HUE_VAL = 127# 実験などで細かい値を設定
 
 #環境に合わせて変わるため、範囲は大きくとっておくのが良い。
 
 
-lower_color = np.array([HUE_VAL-10, 100, 55])# 実験などで細かい値を設定
+lower_color = np.array([HUE_VAL-10, 25, 80])# 実験などで細かい値を設定
 upper_color = np.array([HUE_VAL+10, 255, 255])# 実験などで細かい値を設定
 
 while True:
